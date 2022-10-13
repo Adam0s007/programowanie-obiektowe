@@ -22,7 +22,6 @@ public class World {
         }
     }
 
-
     public static void main(String[] args) {
         if(args.length >= 2){
             Direction[] dir = new Direction[args.length];
