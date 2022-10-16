@@ -5,19 +5,19 @@ public class World {
         for(Direction direction: directions ) {
             switch(direction) {
                 case f:
-                    System.out.println("zwierzak idzie do przodu");
-                    break;
-                case b:
-                    System.out.println("zwierzak idzie do tyłu");
+                    System.out.println("Zwierzak idzie do przodu");
                     break;
                 case r:
-                    System.out.println("zwierzak skręca w prawo");
+                    System.out.println("Zwierzak skręca w prawo");
+                    break;
+                case b:
+                    System.out.println("Zwierzak idzie do tyłu");
                     break;
                 case l:
-                    System.out.println("zwierzak skręca w lewo");
+                    System.out.println("Zwierzak skręca w lewo");
                     break;
                 default:
-                    System.out.println("");
+                    System.out.println("Nieznany kierunek");
             }
         }
     }
@@ -26,7 +26,12 @@ public class World {
         if(args.length >= 2){
             Direction[] dir = new Direction[args.length];
             for(int i = 0; i < args.length;i++) {
-                dir[i] = Direction.valueOf(args[i]);
+                try{
+                    dir[i] = Direction.valueOf(args[i]);  //nawet jesli arg[i] == "other" to wykona się default w switch w run()
+                }catch (IllegalArgumentException e) {
+                    dir[i] = Direction.other; //aby zlapac wyjatek, jesli podamy niewlasciwy argument, wtedy w run() w switchu wykona sie default
+                }
+
             }
             System.out.println("Start");
             run(dir);
