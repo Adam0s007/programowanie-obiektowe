@@ -42,7 +42,6 @@ public class World {
             System.out.println("Za malo argumentow");
         }
 
-        Vector2d vectorek = new Vector2d(10,20);
-        System.out.println(vectorek.x);
+
     }
 }
