@@ -58,7 +58,7 @@ public class Vector2d {
         return new Vector2d(newX,newY);
     }
     Vector2d opposite(){
-        return new Vector2d(this.x * (-1),this.y * (-1));
+        return new Vector2d(this.y ,this.x );
     }
     @Override
     public boolean equals(Object other){
