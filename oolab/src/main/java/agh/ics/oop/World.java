@@ -32,8 +32,6 @@ public class World {
                     dir[i] = Direction.other; //aby zlapac wyjatek, jesli podamy niewlasciwy argument, wtedy w run() w switchu wykona sie default
                 }
             }
-
-
             System.out.println("Start");
             run(dir);
             System.out.println("Stop");
@@ -42,6 +40,19 @@ public class World {
             System.out.println("Za malo argumentow");
         }
 
-
+//        Vector2d position1 = new Vector2d(1,2);
+//        System.out.println(position1);
+//        Vector2d position2 = new Vector2d(-2,1);
+//        System.out.println(position2);
+//        System.out.println(position1.add(position2));
+//        MapDirection direct = MapDirection.NORTH;
+//        System.out.println(direct);
+//        System.out.println(direct.toUnitVector());
+//        direct = MapDirection.EAST;
+//        System.out.println(direct.toUnitVector());
+//        direct = MapDirection.WEST;
+//        System.out.println(direct.toUnitVector());
+//        direct = MapDirection.SOUTH;
+//        System.out.println(direct.toUnitVector());
     }
 }
