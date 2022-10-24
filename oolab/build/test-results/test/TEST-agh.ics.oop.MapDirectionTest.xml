@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="agh.ics.oop.MapDirectionTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-10-24T18:23:19" hostname="DESKTOP-3J3T1I2" time="0.053">
+  <properties/>
+  <testcase name="previousTest()" classname="agh.ics.oop.MapDirectionTest" time="0.044"/>
+  <testcase name="toUnitVectorTest()" classname="agh.ics.oop.MapDirectionTest" time="0.003"/>
+  <testcase name="toStringTest()" classname="agh.ics.oop.MapDirectionTest" time="0.001"/>
+  <testcase name="nextTest()" classname="agh.ics.oop.MapDirectionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -92,8 +92,8 @@ class Vector2dTest {
         Vector2d pos2 = new Vector2d(-1, 4);
         Vector2d pos3 = new Vector2d(2, 3);
 
-        assertEquals(new Vector2d(1, 1),pos1.opposite());
-        assertEquals(new Vector2d(4, -1),pos2.opposite());
+        assertEquals(new Vector2d(-1, -1),pos1.opposite());
+        assertEquals(new Vector2d(1, -4),pos2.opposite());
         assertNotEquals(new Vector2d(2, 3),pos3.opposite());
     }
 
