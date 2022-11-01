@@ -4,20 +4,20 @@ import java.util.*;
 public class OptionsParser {
     public MoveDirection[] parse(String[] args){
         List<MoveDirection> Move_direction_list = new ArrayList<MoveDirection>();
-        for(String arg: args){
-            if(arg.equals("b") || arg.equals("backward")){
+        Arrays.stream(args).forEach(elem -> {
+            if(elem.equals("b") || elem.equals("backward")){
                 Move_direction_list.add(MoveDirection.BACKWARD);
             }
-            else if(arg.equals("f") || arg.equals("forward")){
+            else if(elem.equals("f") || elem.equals("forward")){
                 Move_direction_list.add(MoveDirection.FORWARD);
             }
-            else if(arg.equals("r") || arg.equals("right")){
+            else if(elem.equals("r") || elem.equals("right")){
                 Move_direction_list.add(MoveDirection.RIGHT);
             }
-            else if(arg.equals("l") || arg.equals("left")){
+            else if(elem.equals("l") || elem.equals("left")){
                 Move_direction_list.add(MoveDirection.LEFT);
             }
-        }
+        });
         int leng = Move_direction_list.size();
         return Move_direction_list.toArray(new MoveDirection[leng]);
     }

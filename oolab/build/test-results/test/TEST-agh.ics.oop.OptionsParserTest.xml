@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.OptionsParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-01T22:13:56" hostname="DESKTOP-3J3T1I2" time="0.019">
+<testsuite name="agh.ics.oop.OptionsParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-01T22:27:12" hostname="DESKTOP-3J3T1I2" time="0.019">
   <properties/>
   <testcase name="parse()" classname="agh.ics.oop.OptionsParserTest" time="0.019"/>
   <system-out><![CDATA[]]></system-out>
