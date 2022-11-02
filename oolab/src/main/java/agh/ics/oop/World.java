@@ -57,8 +57,8 @@ public class World {
 
         //lab 3:
         Animal grzesiek = new Animal();
-
-
+//
+//
         OptionsParser pars = new OptionsParser();
         //String[] options = {"a","b","b","f","f","cos","b","r"};
         MoveDirection[] parsed = pars.parse(args);
@@ -68,14 +68,17 @@ public class World {
             grzesiek.move(e);
             System.out.println(e + " : " +grzesiek.toString());
         });
-
+        Animal tomek = new Animal();
+        System.out.println(tomek.toString());
+        System.out.println(tomek.equals(grzesiek));
+        tomek.move(MoveDirection.BACKWARD);
+        System.out.println(tomek.toString());
+        System.out.println(tomek.equals(grzesiek));
 //        jak zaimplementować mechanizm, który wyklucza pojawienie się dwóch zwierząt w tym samym miejscu?
 
-        //mozna zrobic pole statyczne hashmapy, ktore przyjmowaloby pozycję zwierzęcia na mapie,
-        // przy probie utworzenia nowego zwierzecia bądź wykonywania ruchu najpierw sprawdzony zostałby warunek,
-        // czy to zwierze nie przesuwa sie na pozycję, na której juz jest inne zwierzę.
-        // gdy zwierze przesuwamy na nową pozycję, starą pozycję należałoby usunąć z hashmapy.
-        //to rozwiazanie jest dla  dwoch  lub wiecej zwierzątek :)
+        //mozna zrobic nową klasę zawierającą wszystkie zajete aktualnie pozycje. Zwierzątko przemieszczające się
+        // na tą pozycję sprawdzaloby czy ktos tam juz jest. w przypadku poruszenia sie trzeba usunąć ostatnią
+        //pozycję!
 
         //dla tylko dwoch zwierząt możnaby sprawdzać przy pomocy equals (po odpowiednim nadpisaniu funkcji lacznie z hashującą)
 

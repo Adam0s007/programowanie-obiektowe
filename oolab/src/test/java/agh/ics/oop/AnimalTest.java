@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class AnimalTest {
 
 
-
-
     @Test
     void isAt() {
         Animal grzesiek = new Animal();
@@ -40,6 +38,8 @@ class AnimalTest {
         assertEquals(MapDirection.EAST, grzesiek.getDirection());
         grzesiek.move(MoveDirection.LEFT);
         assertEquals(MapDirection.NORTH, grzesiek.getDirection());
+
+
 
     }
 
