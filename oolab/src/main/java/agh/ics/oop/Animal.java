@@ -6,29 +6,10 @@ public class Animal {
     private Vector2d position = new Vector2d(2,2);
     private MapDirection orientation =  MapDirection.NORTH;
 
-
     @Override
     public String toString(){
         return position.toString() + " " + orientation.toString();
     }
-
-    @Override
-    public boolean equals(Object other){ //tylko ze wzgledu na wspolrzedne x,y , czyli pozycję!
-        if (this == other)
-            return true;
-        if (!(other instanceof Animal))
-            return false;
-        Animal betterObj = (Animal) other;
-        if(this.position.equals(betterObj.position)){
-            return true;
-        }
-        return false;
-    }
-    @Override
-    public int hashCode(){
-        return Objects.hash(position);
-    }
-
 
 
     public boolean isAt(Vector2d position1){
