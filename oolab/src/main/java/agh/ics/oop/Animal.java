@@ -32,6 +32,7 @@ public class Animal{
     }
 
 
+
     public boolean isAt(Vector2d position1){
         return position.equals(position1);
     }
