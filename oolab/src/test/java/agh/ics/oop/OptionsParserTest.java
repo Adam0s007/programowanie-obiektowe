@@ -13,8 +13,13 @@ class OptionsParserTest {
         OptionsParser pars = new OptionsParser();
         MoveDirection[] parsed0 = pars.parse(options0);
 
-        MoveDirection  [] dir0 = {MoveDirection.BACKWARD, MoveDirection.BACKWARD,MoveDirection.FORWARD,
-                MoveDirection.FORWARD,MoveDirection.BACKWARD,MoveDirection.RIGHT};
+        MoveDirection  [] dir0 = {
+                MoveDirection.BACKWARD,
+                MoveDirection.BACKWARD,
+                MoveDirection.FORWARD,
+                MoveDirection.FORWARD,
+                MoveDirection.BACKWARD,
+                MoveDirection.RIGHT};
         assertTrue(Arrays.equals(dir0,parsed0));
 
 
