@@ -8,9 +8,9 @@ public class RectangularMap implements IWorldMap{
 private final Vector2d bottomLeft = new Vector2d(0,0);
 private Vector2d topRight = new Vector2d(4,4);//domyslnie
 private MapVisualizer displayer = new MapVisualizer(this);
-private LinkedList<Animal> animals = new LinkedList<>();
+private ArrayList<Animal> animals = new ArrayList<>();
 
-public LinkedList<Animal> getAnimals() {
+public ArrayList<Animal> getAnimals() {
     return animals;
 }
 
@@ -31,7 +31,7 @@ public boolean canMoveTo(Vector2d newPos){
 
 @Override
 public boolean place(Animal animal) {
-    if(!this.canMoveTo(animal.getPosition())) return false;
+    if(!this.canMoveTo(animal.getPosition())){ return false;}
     animals.add(animal);
     return true;
 }
