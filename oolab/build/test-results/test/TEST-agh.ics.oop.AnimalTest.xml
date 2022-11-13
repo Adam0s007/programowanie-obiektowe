@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.AnimalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-11-12T16:26:02" hostname="DESKTOP-3J3T1I2" time="0.034">
-  <properties/>
-  <testcase name="getDirection()" classname="agh.ics.oop.AnimalTest" time="0.022"/>
-  <testcase name="isAt()" classname="agh.ics.oop.AnimalTest" time="0.002"/>
-  <testcase name="move()" classname="agh.ics.oop.AnimalTest" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -15,12 +15,13 @@ public ArrayList<Animal> getAnimals() {
 }
 
 public RectangularMap(int width,int height){
-    if(width >0 && height >0) this.topRight = new Vector2d(abs(width),abs(height)); // nigdy nie zakladamy ze dane będą zawsze dodatnie ;)
+    if(width != 0 && height != 0) this.topRight = new Vector2d(abs(width),abs(height)); // nigdy nie zakladamy ze dane będą zawsze dodatnie ;)
 }
-public RectangularMap(){}; //jesli zostawiamy domyslny rozmiar
-
+public RectangularMap(){};//gdy chcemy miec domyslny rozmiar (4 x 4)
+@Override
 public String toString(){
-    return displayer.draw(this.getBottomLeft(),this.getTopRight());
+
+        return displayer.draw(this.getBottomLeft(),this.getTopRight());
 }
 
 @Override
@@ -43,7 +44,7 @@ public boolean isOccupied(Vector2d position) {
 }
 
 @Override
-public Object objectAt(Vector2d position) {                                      //zwroci obiekt lub null (jesli nie znalezione)
+public Object objectAt(Vector2d position) {                        //zwroci obiekt lub null (jesli nie znalezione)
     return animals.stream().filter(animal -> animal.isAt(position)).findFirst().orElse(null);
 }
 

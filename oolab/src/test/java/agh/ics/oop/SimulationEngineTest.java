@@ -17,7 +17,7 @@ class SimulationEngineTest {
         IWorldMap mapa = new RectangularMap(16, 16);
         Vector2d[] posits = { new Vector2d(1,2), new Vector2d(2, 3)};
         SimulationEngine engine = new SimulationEngine(directions, mapa, posits);
-        engine.appendAnimals();//uwaga! metoda jest wywolywana tylko raz, wywolywana automatycznie po wywolaniu run()
+        //uwaga! metoda jest wywolywana tylko raz, wywolywana automatycznie po wywolaniu run()
         List<Animal> animals = ((RectangularMap) mapa).getAnimals();
 
         assertEquals(animals.get(0).getPosition(), new Vector2d(1,2));

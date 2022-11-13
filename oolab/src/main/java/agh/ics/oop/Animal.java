@@ -7,22 +7,18 @@ public class Animal{
     private IWorldMap myMap = new RectangularMap(4, 4);;
     private Vector2d position = new Vector2d(2,2);
     private MapDirection orientation =  MapDirection.NORTH;
-    public Animal(IWorldMap map){
-        this.myMap = map;
-    }
-
+    //w konstruktorach przypisujemy zwierze do danej mapy, ale nie umieszczamy zwierzecia na tej mapie!!
     public Animal(IWorldMap map, Vector2d initialPosition){
             this.myMap = map;
             this.position = initialPosition;
     }
+    public Animal(IWorldMap map){
+        this.myMap = map;
+    }
 
     public Animal(){
-        position = new Vector2d(2,2);
-        this.myMap.place(this);
-    }
-    private Vector2d bottomLeft = new Vector2d(0,0);
-    private Vector2d topRight = new Vector2d(4,4);
 
+    }
 
     public String toString(){
         return orientation.toString();
@@ -47,17 +43,15 @@ public class Animal{
             case FORWARD:
                 Vector2d newVectorek0 = position.add(orientation.toUnitVector());
 
-                if(!myMap.canMoveTo(newVectorek0)){
-                    break;
+                if(myMap.canMoveTo(newVectorek0)){
+                    position = newVectorek0;
                 }
-                position = newVectorek0;
                 break;
             case BACKWARD:
                 Vector2d newVectorek1 = position.add(orientation.next().next().toUnitVector());
-                if(!myMap.canMoveTo(newVectorek1)){
-                    break;
+                if(myMap.canMoveTo(newVectorek1)){
+                    position = newVectorek1;
                 }
-                position = newVectorek1;
                 break;
             default:
                 System.out.println("Nieznany kierunek");

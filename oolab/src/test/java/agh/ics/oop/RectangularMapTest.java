@@ -28,7 +28,7 @@ class RectangularMapTest {
         Animal zwierzak1 = new Animal(mapa, new Vector2d(1, 3));
         assertTrue(mapa.place(zwierzak)); //doda nowe zwierzę!
         System.out.println(mapa.toString());
-        assertFalse(mapa.place(zwierzak1));
+        assertFalse(mapa.place(zwierzak1));//nie doda nowego zwierzaka!
         System.out.println(mapa.toString());
         //dzieki fladze started w klasie SimulationEngine mozemy dynamicznie dodawac nowe zwierzeta
         engine.run();
