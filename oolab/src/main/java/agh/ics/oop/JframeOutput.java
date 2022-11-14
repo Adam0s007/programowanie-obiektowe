@@ -17,7 +17,7 @@ public class JframeOutput {
         this.frame = new JFrame();
         this.panel = new JPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(map.getTopRight().x*50,map.getTopRight().y*50);
+        frame.setSize(map.getTopRight().x*80,map.getTopRight().y*80);
         panel.setLayout(null);
         frame.add(panel);
 
