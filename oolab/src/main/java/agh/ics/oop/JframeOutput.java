@@ -23,7 +23,7 @@ public class JframeOutput {
 
         animals.stream().forEach(animal-> {
             JLabel label = new JLabel(animal.toString());//orientation
-            label.setBounds(animal.getPosition().x*50, -100+ map.getTopRight().y*50 - animal.getPosition().y*50,50,50);
+            label.setBounds(animal.getPosition().x*40,   + map.getTopRight().y*40 - animal.getPosition().y*40,40,40);
             Border border = BorderFactory.createLineBorder(Color.BLACK, 5);
             label.setBorder(border);
             label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -44,10 +44,10 @@ public class JframeOutput {
 
         this.toSleep(400);
         labels.get(index)
-                .setBounds(animals.get(index).getPosition().x*50,-100+ map.getTopRight().y*50 -
-                        animals.get(index).getPosition().y*50,
-                        50,
-                        50);
+                .setBounds(animals.get(index).getPosition().x*40,  +map.getTopRight().y*40 -
+                        animals.get(index).getPosition().y*40,
+                        40,
+                        40);
 
         labels.get(index).setText(animals.get(index).toString());
 
