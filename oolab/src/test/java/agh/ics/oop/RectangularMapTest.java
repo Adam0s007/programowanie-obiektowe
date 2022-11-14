@@ -32,6 +32,7 @@ class RectangularMapTest {
         System.out.println(mapa.toString());
         //dzieki fladze started w klasie SimulationEngine mozemy dynamicznie dodawac nowe zwierzeta
         engine.run();
+
         //ponizej zastosowano przetestowanie zaistnienia nowego zwierzątka na mapie:
         RectangularMap myMap = (RectangularMap) mapa;
         assertEquals(mapa.objectAt(new Vector2d(1, 3)), myMap.getAnimals().get(0));

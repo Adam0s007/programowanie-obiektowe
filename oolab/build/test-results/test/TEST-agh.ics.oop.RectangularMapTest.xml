@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.RectangularMapTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-11-13T12:14:12" hostname="DESKTOP-3J3T1I2" time="0.146">
+<testsuite name="agh.ics.oop.RectangularMapTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-11-14T12:55:38" hostname="DESKTOP-3J3T1I2" time="20.701">
   <properties/>
-  <testcase name="canMoveTo()" classname="agh.ics.oop.RectangularMapTest" time="0.056"/>
-  <testcase name="isOccupied()" classname="agh.ics.oop.RectangularMapTest" time="0.024"/>
-  <testcase name="objectAt()" classname="agh.ics.oop.RectangularMapTest" time="0.025"/>
-  <testcase name="place()" classname="agh.ics.oop.RectangularMapTest" time="0.026"/>
+  <testcase name="canMoveTo()" classname="agh.ics.oop.RectangularMapTest" time="4.391"/>
+  <testcase name="isOccupied()" classname="agh.ics.oop.RectangularMapTest" time="4.08"/>
+  <testcase name="objectAt()" classname="agh.ics.oop.RectangularMapTest" time="4.069"/>
+  <testcase name="place()" classname="agh.ics.oop.RectangularMapTest" time="8.153"/>
   <system-out><![CDATA[ y\x  0 1 2 3 4 5 6 7 8 910111213141516
  17: -----------------------------------
  16: | | | | | | | | | | | | | | | | | |
