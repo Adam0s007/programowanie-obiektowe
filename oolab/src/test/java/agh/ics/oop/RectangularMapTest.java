@@ -1,11 +1,7 @@
 package agh.ics.oop;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 class RectangularMapTest {
     String[] arr = {"f", "l", "r","f","f"}; //argumenty dobrane tak, aby doszlo do zderzenia lub unikniecia kolizji
     MoveDirection[] directions = new OptionsParser().parse(arr);
@@ -34,10 +30,10 @@ class RectangularMapTest {
         engine.run();
 
         //ponizej zastosowano przetestowanie zaistnienia nowego zwierzątka na mapie:
-        RectangularMap myMap = (RectangularMap) mapa;
-        assertEquals(mapa.objectAt(new Vector2d(1, 3)), myMap.getAnimals().get(0));
-        assertEquals(mapa.objectAt(new Vector2d(2, 3)), myMap.getAnimals().get(1));
-        assertEquals(mapa.objectAt(new Vector2d(2, 2)), myMap.getAnimals().get(2));
+
+        assertEquals(mapa.objectAt(new Vector2d(1, 3)), mapa.getAnimals().get(0));
+        assertEquals(mapa.objectAt(new Vector2d(2, 3)), mapa.getAnimals().get(1));
+        assertEquals(mapa.objectAt(new Vector2d(2, 2)), mapa.getAnimals().get(2));
 
     }
 
@@ -52,8 +48,8 @@ class RectangularMapTest {
     @Test
     void objectAt() {
         engine.run();
-        RectangularMap myMap = (RectangularMap) mapa;
-        ArrayList<Animal> animals = myMap.getAnimals();
+
+        ArrayList<Animal> animals = mapa.getAnimals();
 
         assertNotEquals(mapa.objectAt(new Vector2d(2, 3)), animals.get(0));
         assertEquals(mapa.objectAt(new Vector2d(1, 3)), animals.get(0));

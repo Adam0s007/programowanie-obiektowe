@@ -18,7 +18,7 @@ class SimulationEngineTest {
         Vector2d[] posits = { new Vector2d(1,2), new Vector2d(2, 3)};
         SimulationEngine engine = new SimulationEngine(directions, mapa, posits);
         //uwaga! metoda jest wywolywana tylko raz, wywolywana automatycznie po wywolaniu run()
-        List<Animal> animals = ((RectangularMap) mapa).getAnimals();
+        List<Animal> animals = mapa.getAnimals();
 
         assertEquals(animals.get(0).getPosition(), new Vector2d(1,2));
         assertEquals(animals.get(1).getPosition(), new Vector2d(2,3));
@@ -30,7 +30,7 @@ class SimulationEngineTest {
         Vector2d[] posits2 = { new Vector2d(2,2), new Vector2d(2, 3), new Vector2d(2,2)};
         IEngine engine2 = new SimulationEngine(directions2, mapa2, posits2);
         engine2.run();
-        List <Animal> animals2 = ((RectangularMap) mapa2).getAnimals();
+        List <Animal> animals2 = mapa2.getAnimals();
 
         assertEquals(animals2.get(0).getPosition(), new Vector2d(1,2));
         assertEquals(animals2.get(1).getPosition(), new Vector2d(2,5));
@@ -43,8 +43,7 @@ class SimulationEngineTest {
         Vector2d[] posits3 = { new Vector2d(1,2), new Vector2d(2, 3), new Vector2d(3,1)};
         IEngine engine3 = new SimulationEngine(directions3, mapa3, posits3);
         engine3.run();
-
-        List <Animal> animals3 = ((RectangularMap) mapa3).getAnimals();
+        List <Animal> animals3 = mapa3.getAnimals();
 
         assertEquals(animals3.get(0).getPosition(), new Vector2d(0,3));
         assertEquals(animals3.get(1).getPosition(), new Vector2d(3,2));

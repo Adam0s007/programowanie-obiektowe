@@ -21,22 +21,22 @@ public class SimulationEngine implements IEngine {
 
     @Override
     public void run() {
-        RectangularMap mapa = (RectangularMap) this.myMap;
-        int animalCounter = mapa.getAnimals().size();
+
+        int animalCounter = this.myMap.getAnimals().size();
         int index = 0;
-        ArrayList<Animal> animals = mapa.getAnimals();
+        ArrayList<Animal> animals = this.myMap.getAnimals();
         //tworzymy
-        JframeOutput framek = new JframeOutput(animals,mapa);
+        //JframeOutput framek = new JframeOutput(animals,mapa);
         for(MoveDirection dir : directions){
             Animal animal = animals.get(index);
             animal.move(dir);
-            framek.setPositions(animals,index);
+            //framek.setPositions(animals,index);
             index = (index + 1) % animalCounter;
-            System.out.println(myMap.toString());
+            System.out.println(this.myMap);
         }
 
-        framek.toSleep(2000);
-        framek.discard();
+        //framek.toSleep(2000);
+        //framek.discard();
 
 
 
