@@ -7,8 +7,8 @@ abstract class AbstractWorldMap implements IWorldMap {
     protected int boundary;
     protected ArrayList<Animal> animals = new ArrayList<>();
     //zwierzeta mogą poruszac sie po obszarze definiowanym przez bottomLeft i topRight!
-    protected Vector2d bottomLeft = new Vector2d(0,0);
-    protected Vector2d topRight = new Vector2d(4,4);
+    protected Vector2d bottomLeft = new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE);
+    protected Vector2d topRight = new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE);
 
     //mapa bedzie wyswietlana zgodnie z wszystkimi elementami zawierajacymi sie na mapie
     protected Vector2d topRightBoundary = null;
@@ -20,14 +20,15 @@ abstract class AbstractWorldMap implements IWorldMap {
 
 
     public AbstractWorldMap(Vector2d topRight,Vector2d bottomLeft,int boundary){
-        if(bottomLeft.precedes(topRight)){
+        if(bottomLeft.precedes(topRight)) {
             this.topRight = topRight;
             this.bottomLeft = bottomLeft;
+        }
             if(boundary > 0){
                 this.boundary = boundary;
             }
             //this.updateTotalBoundary(topRight);
-        }
+
 
     }
 
@@ -72,13 +73,7 @@ abstract class AbstractWorldMap implements IWorldMap {
     public Object objectAt(Vector2d position){                        //zwroci obiekt lub null (jesli nie znalezione)
         return animals.stream().filter(animal -> animal.isAt(position)).findFirst().orElse(null);
     }
-    public void setMovingField(int width,int height){
-        if(width != 0 && height != 0){
 
-            this.topRight = new Vector2d(width,height);;
-            this.bottomLeft = new Vector2d(0,0);
-        }
-    }
 
     public Vector2d getBottomLeft() {
         return bottomLeft;

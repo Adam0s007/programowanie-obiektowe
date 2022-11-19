@@ -43,5 +43,5 @@ public interface IWorldMap {
 
     ArrayList<Animal> getAnimals();
 
-    void setMovingField(int width,int height);
+
 }

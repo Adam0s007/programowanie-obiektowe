@@ -8,7 +8,7 @@ public class GrassField extends AbstractWorldMap{
 
     private final ArrayList<Grass> grasses = new ArrayList<>();
     public GrassField(int n){
-        super(new Vector2d(4,4),new Vector2d(0,0),(int)(Math.sqrt(n*10)));//nie wplynie na wielkosc mapy w klasie nadrzednej!
+        super(new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE),new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE),(int)(Math.sqrt(n*10)));//nie wplynie na wielkosc mapy w klasie nadrzednej!
         this.n = n;
         super.boundary = (int)(Math.sqrt(n*10));
         //this.topRight = new Vector2d(this.boundary,this.boundary);
