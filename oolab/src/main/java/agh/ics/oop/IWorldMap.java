@@ -43,6 +43,5 @@ public interface IWorldMap {
 
     ArrayList<Animal> getAnimals();
 
-    void updateTotalBoundary(Vector2d vector);
-
+    void setMovingField(int width,int height);
 }

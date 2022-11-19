@@ -46,7 +46,7 @@ public class Animal extends AbstractWorldMapElement{
                 if(myMap instanceof GrassField && updatePositions(newVectorek0)) break;
                 else if(myMap.canMoveTo(newVectorek0)){
                     position = newVectorek0;
-                    myMap.updateTotalBoundary(position);
+
                 }
                 break;
             case BACKWARD:
@@ -54,7 +54,6 @@ public class Animal extends AbstractWorldMapElement{
                 if(myMap instanceof GrassField && updatePositions(newVectorek1)) break;
                 else if(myMap.canMoveTo(newVectorek1)){
                     position = newVectorek1;
-                    myMap.updateTotalBoundary(position);
                 }
                 break;
             default:
@@ -72,11 +71,9 @@ public class Animal extends AbstractWorldMapElement{
         if(mapa.objectAt(newVectorek0) instanceof Grass){
             //nowe polozenie trawy:
             Vector2d newVec = mapa.uniqPosVector(new Vector2d(mapa.boundary,mapa.boundary));
-            mapa.updateTotalBoundary(newVec);
             ((Grass) mapa.objectAt(newVectorek0)).setPosition(newVec);
             //nowe polozenie zwierzaka
             this.position = newVectorek0;
-            myMap.updateTotalBoundary(position);
             return true;
         }
         return false;
