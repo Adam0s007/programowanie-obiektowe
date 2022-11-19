@@ -43,4 +43,6 @@ public interface IWorldMap {
 
     ArrayList<Animal> getAnimals();
 
+    void updateTotalBoundary(Vector2d vector);
+
 }

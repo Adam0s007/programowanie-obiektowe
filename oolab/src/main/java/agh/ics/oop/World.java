@@ -30,7 +30,7 @@ public class World {
 //        IEngine engine = new SimulationEngine(directions, map, positions);
 //        engine.run();
 //        engine.run();
-        String[] arr = {"f", "b", "r", "l", "f" ,"f" ,"r", "r" ,"f", "f", "f", "f", "f", "f" ,"f", "f"};
+       String[] arr = {"f", "b", "r", "l", "f" ,"f" ,"r", "r" ,"f", "f", "f", "f", "f", "f" ,"f", "f"};
 //        MoveDirection[] directions2 = new OptionsParser().parse(arr);
 //        IWorldMap map2 = new RectangularMap(10, 5);
 //        Vector2d[] positions2 = { new Vector2d(2,2), new Vector2d(3,4) };
@@ -39,11 +39,12 @@ public class World {
 
 
         MoveDirection[] directions2 = new OptionsParser().parse(arr);
-        IWorldMap map2 = new GrassField(5);
+       IWorldMap map2 = new GrassField(10);
         Vector2d[] positions2 = { new Vector2d(2,2), new Vector2d(3,4)};
         IEngine engine2 = new SimulationEngine(directions2, map2, positions2);
         engine2.run();
 
+        System.out.println(map2);
 
     }
 }
