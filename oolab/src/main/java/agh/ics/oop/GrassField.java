@@ -6,6 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GrassField extends AbstractWorldMap{
     int n;
 
+
+
     private final ArrayList<Grass> grasses = new ArrayList<>();
     public GrassField(int n){
         super(new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE),new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE),(int)(Math.sqrt(n*10)));//nie wplynie na wielkosc mapy w klasie nadrzednej!
@@ -13,11 +15,9 @@ public class GrassField extends AbstractWorldMap{
         super.boundary = (int)(Math.sqrt(n*10));
         //this.topRight = new Vector2d(this.boundary,this.boundary);
         this.createGrasses(this.n);
-
-
-        grasses.stream().forEach(grass->{
-            System.out.println(grass.getPosition());
-        });
+//        grasses.stream().forEach(grass->{
+//            System.out.println(grass.getPosition());
+//        });
     }
 
     public void createGrasses(int n){ //definiuje ile mozna stworzyc nowych trawek i randomowo je umeiszcza tam gdzie nie ma obiektow
@@ -51,6 +51,11 @@ public class GrassField extends AbstractWorldMap{
             if (grass.getPosition().y < super.bottomLeftBoundary.y) super.bottomLeftBoundary.y = grass.getPosition().y;
         });
     }
+
+    public ArrayList<Grass> getGrasses() {
+        return grasses;
+    }
+
 
 
 }

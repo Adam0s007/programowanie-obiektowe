@@ -42,6 +42,6 @@ public interface IWorldMap {
     Object objectAt(Vector2d position);
 
     ArrayList<Animal> getAnimals();
-
+    ArrayList<Grass> getGrasses();
 
 }

@@ -28,8 +28,6 @@ abstract class AbstractWorldMap implements IWorldMap {
                 this.boundary = boundary;
             }
             //this.updateTotalBoundary(topRight);
-
-
     }
 
 
@@ -116,7 +114,7 @@ abstract class AbstractWorldMap implements IWorldMap {
             if(animal.getPosition().x < this.bottomLeftBoundary.x) this.bottomLeftBoundary.x = animal.getPosition().x;
             if(animal.getPosition().y < this.bottomLeftBoundary.y) this.bottomLeftBoundary.y = animal.getPosition().y;
         });
-
     }
+    abstract public ArrayList<Grass> getGrasses();
 
 }

@@ -28,10 +28,7 @@ public class Animal extends AbstractWorldMapElement{
     public String extendedToString(){
         return position.toString() + " " + orientation.toString();
     }
-    @Override
-    public String getType() {
-        return "A";
-    }
+
 
     public void move(MoveDirection direction0){
         switch(direction0){
