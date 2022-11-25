@@ -6,9 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GrassField extends AbstractWorldMap{
     int n;
 
-
-
-    private final ArrayList<Grass> grasses = new ArrayList<>();
+    private final HashMap<Vector2d,Grass> grasses = new HashMap<>();
     public GrassField(int n){
         super(new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE),new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE),(int)(Math.sqrt(n*10)));//nie wplynie na wielkosc mapy w klasie nadrzednej!
         this.n = n;
@@ -24,14 +22,14 @@ public class GrassField extends AbstractWorldMap{
         for(int i = 0; i < n; i++){
             Vector2d newVec = uniqPosVector(new Vector2d(super.boundary,super.boundary));
             //update granicy!
-            grasses.add(new Grass(newVec));
+            grasses.put(newVec,new Grass(newVec));
         }
     }
 
 
     public boolean isOccupied(Vector2d position) {
         if(super.isOccupied(position))return true;//jesli tam jest zwierzę to zwroc true
-        return grasses.stream().anyMatch((grass -> grass.isAt(position))); // jesli tam jest roslina zwroc true
+        return grasses.containsKey(position); // jesli tam jest roslina zwroc true
         //zwroc false w przeciwnym wypadku
     }
 
@@ -39,11 +37,12 @@ public class GrassField extends AbstractWorldMap{
     public Object objectAt(Vector2d position){                        //zwroci obiekt lub null (jesli nie znalezione)
         return (super.objectAt(position) != null) ?//najpierw sprawdzi czy tam jest zwierze
                 super.objectAt(position) : // po pierwsze jesli jest tam zwierzę to zwroci to zwierze, jesli nie to trawe!
-                grasses.stream().filter(grass -> grass.isAt(position)).findFirst().orElse(null);
+                grasses.get(position);
     }
     public void changerOfBoundary() { //daje skrajne punkty zawsze  jako krance mapy
         super.changerOfBoundary();
-        grasses.stream().forEach(grass -> {
+        List<Grass> list = new ArrayList<Grass>(grasses.values());
+        list.stream().forEach(grass -> {
             if (grass.getPosition().x > super.topRightBoundary.x) super.topRightBoundary.x = grass.getPosition().x;
             if (grass.getPosition().y > super.topRightBoundary.y) super.topRightBoundary.y = grass.getPosition().y;
 
@@ -52,10 +51,15 @@ public class GrassField extends AbstractWorldMap{
         });
     }
 
-    public ArrayList<Grass> getGrasses() {
+    public HashMap<Vector2d, Grass> getGrasses() {
         return grasses;
     }
 
+    public void positionChangedGrass(Vector2d oldPosition, Vector2d newPosition){
+        Grass grass = this.grasses.get(oldPosition);
+        this.grasses.remove(oldPosition);
+        this.grasses.put(newPosition, grass);
+    }
 
 
 }

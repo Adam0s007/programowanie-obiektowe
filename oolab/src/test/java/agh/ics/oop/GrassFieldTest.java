@@ -22,7 +22,8 @@ class GrassFieldTest {
         for(int i =0;i < 20;i++){
             IWorldMap grassField = new GrassField(randomizer.nextInt(20)+1);
             HashMap<String,Boolean> counter = new HashMap<String,Boolean>();
-            grassField.getGrasses().stream().forEach(grass->{
+            List<Grass> list = new ArrayList<Grass>(grassField.getGrasses().values());
+            list.stream().forEach(grass->{
                 assertFalse(counter.containsKey(grass.getPosition().toString()));
                 counter.put(grass.getPosition().toString(),true);
             });
@@ -34,7 +35,6 @@ class GrassFieldTest {
     engine.run();
     assertTrue(mapa.isOccupied(new Vector2d(6,3)));
     assertTrue(mapa.isOccupied(new Vector2d(2,10)));
-    //nie mozemy sprawdzic innych pozycji, bo nie wiemy gdzie bedzie trawa, ewentualnie poza pole wystepowania trawy
         assertFalse(mapa.isOccupied(new Vector2d(-1,-1)));
         assertFalse(mapa.isOccupied(new Vector2d(20,20)));
     }

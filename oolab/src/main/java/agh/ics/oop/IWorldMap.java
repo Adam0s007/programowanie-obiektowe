@@ -1,6 +1,7 @@
 package agh.ics.oop;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface IWorldMap {
     /**
@@ -41,7 +42,7 @@ public interface IWorldMap {
      */
     Object objectAt(Vector2d position);
 
-    ArrayList<Animal> getAnimals();
-    ArrayList<Grass> getGrasses();
+    HashMap<Vector2d,Animal> getAnimals();
+    HashMap<Vector2d, Grass> getGrasses();
 
 }

@@ -36,15 +36,12 @@ public class World {
 //        IEngine engine2 = new SimulationEngine(directions2, map2, positions2);
 //        engine2.run();
 
-
         MoveDirection[] directions2 = new OptionsParser().parse(arr);
-       IWorldMap map2 = new GrassField(20); //mapa GrassField zapewnia nam nieograniczone mozliwosci dla poruszania sie (poza najezdzaniem zwierzat na siebie)
+       IWorldMap map2 = new GrassField(10); //mapa GrassField zapewnia nam nieograniczone mozliwosci dla poruszania sie (poza najezdzaniem zwierzat na siebie)
         //i pewien obszar zawierajacy trawki
         Vector2d[] positions2 = { new Vector2d(2,2), new Vector2d(3,4)};
         IEngine engine2 = new SimulationEngine(directions2, map2, positions2);
         engine2.run();
-
         System.out.println(map2);
-
     }
 }

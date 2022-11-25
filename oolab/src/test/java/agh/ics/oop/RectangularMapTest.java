@@ -16,7 +16,6 @@ class RectangularMapTest {
         assertFalse(mapa.canMoveTo(new Vector2d(2, 3)));
         assertFalse(mapa.canMoveTo(new Vector2d(1, 3)));
     }
-
     @Test
     void place() {
         engine.run();
@@ -49,12 +48,15 @@ class RectangularMapTest {
     void objectAt() {
         engine.run();
 
-        ArrayList<Animal> animals = mapa.getAnimals();
-
-        assertNotEquals(mapa.objectAt(new Vector2d(2, 3)), animals.get(0));
-        assertEquals(mapa.objectAt(new Vector2d(1, 3)), animals.get(0));
-        assertEquals(mapa.objectAt(new Vector2d(2, 3)), animals.get(1));
-        assertEquals(mapa.objectAt(new Vector2d(0, 0)),null);
+        HashMap<Vector2d,Animal> animals = mapa.getAnimals();
+        Vector2d vector0 = new Vector2d(2, 3);
+        Vector2d vector1 = new Vector2d(1, 3);
+        Vector2d vector2 = new Vector2d(2, 3);
+        Vector2d vector3 = new Vector2d(0, 0);
+        assertNotEquals(mapa.objectAt(vector0), animals.get(vector0));
+        assertEquals(mapa.objectAt(vector1), animals.get(vector1));
+        assertEquals(mapa.objectAt(vector2), animals.get(vector2));
+        assertEquals(mapa.objectAt(vector3),null);
 
     }
 }

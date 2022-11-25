@@ -24,12 +24,14 @@ public class SimulationEngine implements IEngine {
 
         int animalCounter = this.myMap.getAnimals().size();
         int index = 0;
-        ArrayList<Animal> animals = this.myMap.getAnimals();
+        //HashMap<Vector2d,Animal> animals = this.myMap.getAnimals();
+        List<Animal> listAnimals = new ArrayList<Animal>(this.myMap.getAnimals().values());
         //tworzymy
         //JframeOutput framek = new JframeOutput(animals,mapa);
         for(MoveDirection dir : directions){
-            Animal animal = animals.get(index);
+            Animal animal = listAnimals.get(index);
             animal.move(dir);
+
             //framek.setPositions(animals,index);
             index = (index + 1) % animalCounter;
             System.out.println(this.myMap);
