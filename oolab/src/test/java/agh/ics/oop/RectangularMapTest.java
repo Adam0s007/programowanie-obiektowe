@@ -25,14 +25,22 @@ class RectangularMapTest {
         System.out.println(mapa.toString());
         assertFalse(mapa.place(zwierzak1));//nie doda nowego zwierzaka!
         System.out.println(mapa.toString());
-        //dzieki fladze started w klasie SimulationEngine mozemy dynamicznie dodawac nowe zwierzeta
+
+        engine.run();
+
+        engine.run();
+        engine.run();
         engine.run();
 
         //ponizej zastosowano przetestowanie zaistnienia nowego zwierzątka na mapie:
 
-        assertEquals(mapa.objectAt(new Vector2d(1, 3)), mapa.getAnimals().get(0));
-        assertEquals(mapa.objectAt(new Vector2d(2, 3)), mapa.getAnimals().get(1));
-        assertEquals(mapa.objectAt(new Vector2d(2, 2)), mapa.getAnimals().get(2));
+        //
+        List<Animal> listAnimals = new ArrayList<Animal>(mapa.getAnimals().values());
+
+        assertEquals(mapa.objectAt(new Vector2d(2, 4)), listAnimals.get(0));
+        assertEquals(mapa.objectAt(new Vector2d(3, 6)), listAnimals.get(1));
+        assertEquals(mapa.objectAt(new Vector2d(0, 3)),listAnimals.get(2));
+
 
     }
 
@@ -47,13 +55,12 @@ class RectangularMapTest {
     @Test
     void objectAt() {
         engine.run();
-
         HashMap<Vector2d,Animal> animals = mapa.getAnimals();
         Vector2d vector0 = new Vector2d(2, 3);
         Vector2d vector1 = new Vector2d(1, 3);
         Vector2d vector2 = new Vector2d(2, 3);
         Vector2d vector3 = new Vector2d(0, 0);
-        assertNotEquals(mapa.objectAt(vector0), animals.get(vector0));
+        assertNotEquals(mapa.objectAt(vector0), animals.get(vector1));
         assertEquals(mapa.objectAt(vector1), animals.get(vector1));
         assertEquals(mapa.objectAt(vector2), animals.get(vector2));
         assertEquals(mapa.objectAt(vector3),null);
