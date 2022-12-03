@@ -3,7 +3,7 @@ package agh.ics.oop;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
+public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
     protected int boundary;
     protected HashMap<Vector2d,Animal> animals = new HashMap<Vector2d,Animal>();
     //zwierzeta mogą poruszac sie po obszarze definiowanym przez bottomLeft i topRight!
