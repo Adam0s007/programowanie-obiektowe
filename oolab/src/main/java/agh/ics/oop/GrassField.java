@@ -23,6 +23,7 @@ public class GrassField extends AbstractWorldMap{
             Vector2d newVec = uniqPosVector(new Vector2d(super.boundary,super.boundary));
             //update granicy!
             grasses.put(newVec,new Grass(newVec));
+            mapBound.addElementToMap(newVec);
         }
     }
 
@@ -39,17 +40,7 @@ public class GrassField extends AbstractWorldMap{
                 super.objectAt(position) : // po pierwsze jesli jest tam zwierzę to zwroci to zwierze, jesli nie to trawe!
                 grasses.get(position);
     }
-    public void changerOfBoundary() { //daje skrajne punkty zawsze  jako krance mapy
-        super.changerOfBoundary();
-        List<Grass> list = new ArrayList<Grass>(grasses.values());
-        list.stream().forEach(grass -> {
-            if (grass.getPosition().x > super.topRightBoundary.x) super.topRightBoundary.x = grass.getPosition().x;
-            if (grass.getPosition().y > super.topRightBoundary.y) super.topRightBoundary.y = grass.getPosition().y;
 
-            if (grass.getPosition().x < super.bottomLeftBoundary.x) super.bottomLeftBoundary.x = grass.getPosition().x;
-            if (grass.getPosition().y < super.bottomLeftBoundary.y) super.bottomLeftBoundary.y = grass.getPosition().y;
-        });
-    }
 
     public HashMap<Vector2d, Grass> getGrasses() {
         return grasses;
@@ -59,6 +50,7 @@ public class GrassField extends AbstractWorldMap{
         Grass grass = this.grasses.get(oldPosition);
         this.grasses.remove(oldPosition);
         this.grasses.put(newPosition, grass);
+        mapBound.positionChanged(oldPosition,newPosition);
     }
 
 

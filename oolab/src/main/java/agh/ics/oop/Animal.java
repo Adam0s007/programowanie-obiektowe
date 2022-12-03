@@ -5,7 +5,7 @@ import java.util.*;
 public class Animal extends AbstractWorldMapElement{
 
     private IWorldMap myMap;
-
+    protected final List<IPositionChangeObserver> observers = new ArrayList<>();
     private MapDirection orientation =  MapDirection.NORTH;
     //w konstruktorach przypisujemy zwierze do danej mapy, ale nie umieszczamy zwierzecia na tej mapie!!
     public Animal(IWorldMap map, Vector2d initialPosition){
@@ -41,10 +41,9 @@ public class Animal extends AbstractWorldMapElement{
                 break;
             case FORWARD:
                 Vector2d newVectorek0 = position.add(orientation.toUnitVector());
-                if(myMap instanceof GrassField && updatePositions(newVectorek0)) break;
+                if(myMap instanceof GrassField && updatePositions(newVectorek0)) break;//sprawdzanie czy tam jest trawa
                 else if(myMap.canMoveTo(newVectorek0)){
                     positionChanged(position, newVectorek0);
-                    //super.positionChanged(position,newVectorek0);
                     this.position = newVectorek0;
                 }
                 break;

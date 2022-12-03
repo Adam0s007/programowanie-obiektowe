@@ -1,4 +1,5 @@
 package agh.ics.oop;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,23 +24,12 @@ class RectangularMapTest {
         Animal zwierzak1 = new Animal(mapa, new Vector2d(1, 3));
         assertTrue(mapa.place(zwierzak)); //doda nowe zwierzę!
         System.out.println(mapa.toString());
-        assertFalse(mapa.place(zwierzak1));//nie doda nowego zwierzaka!
+        Assertions.assertThrows(IllegalArgumentException.class, ()->mapa.place(zwierzak1));
         System.out.println(mapa.toString());
-
-        engine.run();
-
-        engine.run();
-        engine.run();
-        engine.run();
 
         //ponizej zastosowano przetestowanie zaistnienia nowego zwierzątka na mapie:
 
         //
-        List<Animal> listAnimals = new ArrayList<Animal>(mapa.getAnimals().values());
-
-        assertEquals(mapa.objectAt(new Vector2d(2, 4)), listAnimals.get(0));
-        assertEquals(mapa.objectAt(new Vector2d(3, 6)), listAnimals.get(1));
-        assertEquals(mapa.objectAt(new Vector2d(0, 3)),listAnimals.get(2));
 
 
     }

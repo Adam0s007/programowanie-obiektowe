@@ -9,7 +9,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class GrassFieldTest {
     Random randomizer = ThreadLocalRandom.current();
-
     String[] arr = {"f", "l", "r","f","f","r","r","f","l","f","f","f","f","f","f","f","f","f","f","f"}; //argumenty dobrane tak, aby doszlo do zderzenia lub unikniecia kolizji
     MoveDirection[] directions = new OptionsParser().parse(arr);
     IWorldMap mapa = new GrassField(12);

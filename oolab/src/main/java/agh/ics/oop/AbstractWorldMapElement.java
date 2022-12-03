@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract class AbstractWorldMapElement implements IMapElement{
     protected Vector2d position = new Vector2d(2,2);
-    protected final List<IPositionChangeObserver> observers = new ArrayList<>();
+
     public AbstractWorldMapElement(Vector2d position){
         this.position = position;
     }

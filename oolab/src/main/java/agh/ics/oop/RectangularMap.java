@@ -16,4 +16,5 @@ public RectangularMap(int width,int height){
         return new HashMap<>(); // zwraca pustą liste bo nie zawiera roślinnosci
     }
 
+
 }

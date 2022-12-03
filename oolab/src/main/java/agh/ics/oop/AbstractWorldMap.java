@@ -11,13 +11,20 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
     protected Vector2d topRight = new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE);
 
     //mapa bedzie wyswietlana zgodnie z wszystkimi elementami zawierajacymi sie na mapie
-    protected Vector2d topRightBoundary = null;
-    protected Vector2d bottomLeftBoundary = null;
+
 
     private MapVisualizer displayer = new MapVisualizer(this);
 
     protected Random randomizer = ThreadLocalRandom.current();
+    protected MapBoundary mapBound = new MapBoundary();
 
+    public Vector2d getLowerLeft(){
+        return mapBound.lowerLeftChecker();
+    }
+
+    public Vector2d getUpperRight(){
+        return mapBound.upperRightChecker();
+    }
 
     public AbstractWorldMap(Vector2d topRight,Vector2d bottomLeft,int boundary){
         if(bottomLeft.precedes(topRight)) {
@@ -32,11 +39,10 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
 
 
     public String toString(){
-        this.changerOfBoundary();
 //        if(this.topRightBoundary == null || this.bottomLeftBoundary == null){
 //            return displayer.draw(this.getBottomLeft(),this.getTopRight());
 //        }
-        return displayer.draw(this.getBottomLeftBoundary(),this.getTopRightBoundary());
+        return displayer.draw(mapBound.lowerLeftChecker(), mapBound.upperRightChecker());
     }
 
 
@@ -50,13 +56,11 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
             GrassField myMap = (GrassField) this;
             myMap.positionChangedGrass(oldVec,newVec);
 
-            animals.put(animal.getPosition(),animal);
-            animal.addObserver(this);
+            makeMemeberOfMap(animal);
             return true;
         }
-        if(!this.canMoveTo(animal.getPosition())){ return false;}
-        animals.put(animal.getPosition(),animal);
-        animal.addObserver(this); //do zwierzaka dodajemy obserwowaną mapę!!
+        if(!this.canMoveTo(animal.getPosition())){ throw new IllegalArgumentException(animal.getPosition()+ " - Nie mozna postawić zwierzaka na tej pozycji");}
+        makeMemeberOfMap(animal);
         return true;
     }
     public boolean canMoveTo(Vector2d newPos){
@@ -66,6 +70,12 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
         return this.isOccupied(newPos) ? false : newPos.follows(this.getBottomLeft()) && newPos.precedes(this.getTopRight());
     }
 
+    public void makeMemeberOfMap(Animal animal){
+        animals.put(animal.getPosition(),animal);
+        mapBound.addElementToMap(animal.getPosition());
+        animal.addObserver(this); //do zwierzaka dodajemy obserwowaną mapę!!
+        animal.addObserver(mapBound);
+    }
     //wykorzystanie metody nadpisanej equals w Vector2D
 
     public boolean isOccupied(Vector2d position) {
@@ -86,12 +96,6 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
     public Vector2d getTopRight() {
         return topRight;
     }
-    public Vector2d getTopRightBoundary(){
-        return this.topRightBoundary;
-    }
-    public Vector2d getBottomLeftBoundary(){
-        return this.bottomLeftBoundary;
-    }
 
     public HashMap<Vector2d,Animal> getAnimals() {
         return animals;
@@ -105,20 +109,11 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
     protected Vector2d uniqPosVector(Vector2d vector){ //vector to graniczny vector! topRight naszej granicy
         Vector2d newVec = this.getRandom(vector);
         while(this.objectAt(newVec) != null){newVec = this.getRandom(vector);}
+
         return newVec;
     }
 
-    public void changerOfBoundary(){ //daje skrajne punkty zawsze  jako krance mapy
-        this.topRightBoundary = new Vector2d(Integer.MIN_VALUE,Integer.MIN_VALUE);
-        this.bottomLeftBoundary = new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE);
-        List<Animal> list = new ArrayList<Animal>(animals.values());
-        list.stream().forEach(animal->{
-            if(animal.getPosition().x > this.topRightBoundary.x) this.topRightBoundary.x = animal.getPosition().x;
-            if(animal.getPosition().y > this.topRightBoundary.y) this.topRightBoundary.y = animal.getPosition().y;
-            if(animal.getPosition().x < this.bottomLeftBoundary.x) this.bottomLeftBoundary.x = animal.getPosition().x;
-            if(animal.getPosition().y < this.bottomLeftBoundary.y) this.bottomLeftBoundary.y = animal.getPosition().y;
-        });
-    }
+
     abstract public HashMap<Vector2d, Grass> getGrasses();
 
     @Override
@@ -126,6 +121,7 @@ abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver  {
         Animal animal = this.animals.get(oldPosition);
         this.animals.remove(oldPosition);
         this.animals.put(newPosition, animal);
+        mapBound.positionChanged(oldPosition,newPosition);
     }
 
 
