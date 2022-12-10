@@ -34,7 +34,7 @@ public class World {
 //        IEngine engine = new SimulationEngine(directions, map, positions);
 //        engine.run();
 //        engine.run();
-            String[] arr = {"f", "b","b", "f", "f", "b", "l", "f", "l", "f", "f", "f", "f", "f", "f", "f", "f"};
+            //String[] arr = {"f", "b","b", "f", "f", "b", "l", "f", "l", "f", "f", "f", "f", "f", "f", "f", "f"};
 //        MoveDirection[] directions2 = new OptionsParser().parse(arr);
 //        IWorldMap map2 = new RectangularMap(10, 5);
 //        Vector2d[] positions2 = { new Vector2d(2,2), new Vector2d(3,4) };

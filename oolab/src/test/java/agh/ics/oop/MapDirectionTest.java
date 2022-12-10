@@ -24,10 +24,10 @@ class MapDirectionTest {
 
     @Test
     void toStringTest(){
-        assertEquals("Północ",MapDirection.NORTH.toString());
-        assertEquals("Wschód",MapDirection.EAST.toString());
-        assertEquals("Południe",MapDirection.SOUTH.toString());
-        assertEquals("Zachód",MapDirection.WEST.toString());
+        assertEquals("N",MapDirection.NORTH.toString());
+        assertEquals("E",MapDirection.EAST.toString());
+        assertEquals("S",MapDirection.SOUTH.toString());
+        assertEquals("W",MapDirection.WEST.toString());
     }
     @Test
     public void toUnitVectorTest(){

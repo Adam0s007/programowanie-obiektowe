@@ -3,6 +3,7 @@ package agh.ics.oop.gui;
 import agh.ics.oop.*;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,13 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class App extends Application {
+public class App extends Application{
 
     private GridPane grid = new GridPane();
     private IWorldMap myMap;
     private final int width = 45;
     private final int height = 45;
-    private Stage primaryStage;
+    public Stage primaryStage;
     private VBox drawObject(Vector2d position) {
         VBox result = null;
         if (this.myMap.isOccupied(position)) {
@@ -75,6 +76,7 @@ public class App extends Application {
         //tworzenie widku w okienku
         Scene scene = new Scene(grid, (rangeX+2)*width*45.5, (rangeY+2)*height*45.5);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         //primaryStage.show();
 
         System.out.println(this.myMap.toString());
@@ -82,10 +84,13 @@ public class App extends Application {
         //System.out.println("System zakończył działanie");
     }
 
+
+
+
     public void updateMap(){
-        grid.getChildren().clear();
-        this.grid = new GridPane();
-        drawMap();
+                grid.getChildren().clear();
+                this.grid = new GridPane();
+                drawMap();
     }
 
     private void startGame(SimulationEngine engine, String text){
@@ -101,7 +106,7 @@ public class App extends Application {
             this.myMap = map;
             this.primaryStage = primaryStage;
             Vector2d[] positions2 = {new Vector2d(2,2), new Vector2d(3,4)};
-            SimulationEngine engine = new SimulationEngine(map, positions2, this, 3000);
+            SimulationEngine engine = new SimulationEngine(map, positions2, this, 800);
             Button button = new Button("Start");
             TextField text = new TextField("Enter directions");
             HBox hbox = new HBox(text, button);
@@ -110,6 +115,7 @@ public class App extends Application {
             Scene scene = new Scene(hbox, 400, 400);
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setMaximized(true);
 
 
         } catch (IllegalArgumentException exception) {
