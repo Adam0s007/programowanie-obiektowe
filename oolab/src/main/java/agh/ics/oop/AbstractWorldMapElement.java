@@ -21,5 +21,16 @@ abstract class AbstractWorldMapElement implements IMapElement{
         return position.equals(position1);
     }
 
-
+    public String getLinkToImage(){
+        String result;
+        switch(this.toString()){
+            case ("N") -> result = "src/main/resources/up.png";
+            case ("E") -> result = "src/main/resources/right.png";
+            case ("S") -> result = "src/main/resources/down.png";
+            case ("W") -> result = "src/main/resources/left.png";
+            case ("*") -> result = "src/main/resources/grass.png";
+            default -> result = null;
+        }
+        return result;
+    }
 }

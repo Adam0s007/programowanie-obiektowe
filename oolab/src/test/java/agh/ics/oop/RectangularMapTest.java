@@ -27,9 +27,6 @@ class RectangularMapTest {
         Assertions.assertThrows(IllegalArgumentException.class, ()->mapa.place(zwierzak1));
         System.out.println(mapa.toString());
 
-        //ponizej zastosowano przetestowanie zaistnienia nowego zwierzątka na mapie:
-
-        //
 
 
     }
@@ -42,6 +39,7 @@ class RectangularMapTest {
         assertTrue(mapa.isOccupied(new Vector2d(1, 3)));
     }
 
+    
     @Test
     void objectAt() {
         engine.run();
