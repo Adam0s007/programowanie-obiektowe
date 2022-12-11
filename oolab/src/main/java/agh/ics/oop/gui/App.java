@@ -5,12 +5,20 @@ import agh.ics.oop.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class App extends Application{
 
@@ -39,6 +47,7 @@ public class App extends Application{
     }
     private void drawMap(){
         grid.setGridLinesVisible(true);
+        grid.setStyle("-fx-padding: 100 100 100 100;");
         GrassField myMap = (GrassField) this.myMap;
         int rangeY = myMap.getUpperRight().y - myMap.getLowerLeft().y;
         int rangeX = myMap.getUpperRight().x - myMap.getLowerLeft().x;
@@ -116,19 +125,29 @@ public class App extends Application{
 
             threadExceptionHandler();
 
+
             AbstractWorldMap map = new GrassField(10);
             this.myMap = map;
             this.primaryStage = primaryStage;
             Vector2d[] positions2 = {new Vector2d(2,2), new Vector2d(3,4)};
             SimulationEngine engine = new SimulationEngine(map, positions2, this, 800);
             Button button = new Button("Start");
+            button.setPadding(new Insets(20, 100, 20 ,100));
+            button.setStyle("-fx-font: 24 arial;");
             TextField text = new TextField("Enter directions");
+            text.setPadding(new Insets(20,30,20,30));
+            text.setStyle("-fx-font: 24 arial;");
             HBox hbox = new HBox(text, button);
+
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(20);
+
             button.setOnAction(actionEvent -> startGame( engine, text.getText()));
             Scene scene = new Scene(hbox, 400, 400);
+
             primaryStage.setScene(scene);
-            primaryStage.show();
             primaryStage.setMaximized(true);
+            primaryStage.show();
 
 
         } catch (IllegalArgumentException exception) {
