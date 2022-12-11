@@ -19,6 +19,8 @@ public class App extends Application{
     private final int width = 45;
     private final int height = 45;
     public Stage primaryStage;
+
+
     private VBox drawObject(Vector2d position) {
         VBox result = null;
         if (this.myMap.isOccupied(position)) {
@@ -85,7 +87,15 @@ public class App extends Application{
     }
 
 
-
+    public void threadExceptionHandler(){
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println("Nieprawidlowo wpisane dane: " + e);
+                Platform.exit();
+            }
+        });
+    }
 
     public void updateMap(){
                 grid.getChildren().clear();
@@ -95,13 +105,17 @@ public class App extends Application{
 
     private void startGame(SimulationEngine engine, String text){
         String[] array = text.split(" ");
-        engine.setDirections(array);
+        MoveDirection[] directions = new OptionsParser().parse(array);
+        engine.setDirections(directions);
         Thread threadEngine = new Thread(engine);
         threadEngine.start();
     }
 
     public void start(Stage primaryStage) {
         try {
+
+            threadExceptionHandler();
+
             AbstractWorldMap map = new GrassField(10);
             this.myMap = map;
             this.primaryStage = primaryStage;
@@ -111,7 +125,6 @@ public class App extends Application{
             TextField text = new TextField("Enter directions");
             HBox hbox = new HBox(text, button);
             button.setOnAction(actionEvent -> startGame( engine, text.getText()));
-
             Scene scene = new Scene(hbox, 400, 400);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -121,6 +134,7 @@ public class App extends Application{
         } catch (IllegalArgumentException exception) {
             // kod obsługi wyjątku
             System.out.println(exception.getMessage());
+
         }
         catch (RuntimeException e){
             System.out.println(e.getMessage());

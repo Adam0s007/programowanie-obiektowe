@@ -39,8 +39,8 @@ public class SimulationEngine implements IEngine,Runnable {
         System.out.println(myMap.toString());
     }
 
-    public void setDirections(String[] args){
-        this.directions = new OptionsParser().parse(args);
+    public void setDirections(MoveDirection[] directions){
+        this.directions = directions;
     }
 
     @Override
@@ -60,6 +60,8 @@ public class SimulationEngine implements IEngine,Runnable {
                     Platform.runLater(this.observer::updateMap);
                     Thread.sleep(moveDelay);
                 }
+                Thread.sleep(2000);
+                Platform.exit();
 
             }catch (InterruptedException e) {
                 throw new RuntimeException(e + "Przerwano symulację");
