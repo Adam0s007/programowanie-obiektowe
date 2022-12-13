@@ -46,7 +46,7 @@ public class SimulationEngine implements IEngine,Runnable {
     @Override
     public void run() {
         if(this.isAppOpening){
-            Platform.runLater(this.observer::updateMap);
+            this.observer.updateMap();
             try{
                 Thread.sleep(moveDelay);
                 int animalCounter = this.myMap.getAnimals().size();
@@ -57,7 +57,7 @@ public class SimulationEngine implements IEngine,Runnable {
                     animal.move(dir);
                     index = (index + 1) % animalCounter;
                     //System.out.println(this.myMap);
-                    Platform.runLater(this.observer::updateMap);
+                    this.observer.updateMap();
                     Thread.sleep(moveDelay);
                 }
                 Thread.sleep(2000);

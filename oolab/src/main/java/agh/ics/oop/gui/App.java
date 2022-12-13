@@ -7,18 +7,12 @@ import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class App extends Application{
 
@@ -118,12 +112,14 @@ public class App extends Application{
     }
 
     public void updateMap(){
-                grid.getChildren().clear();
-                this.grid = new GridPane();
-                drawMap();
+        Platform.runLater(()->{
+            grid.getChildren().clear();
+            this.grid = new GridPane();
+            drawMap();
+        });
     }
 
-    private void startGame(SimulationEngine engine, String text){
+    private void init(SimulationEngine engine, String text){
         String[] array = text.split(" ");
         MoveDirection[] directions = new OptionsParser().parse(array);
         engine.setDirections(directions);
@@ -155,7 +151,7 @@ public class App extends Application{
             hbox.setAlignment(Pos.CENTER);
             hbox.setSpacing(20);
 
-            button.setOnAction(actionEvent -> startGame( engine, text.getText()));
+            button.setOnAction(actionEvent -> init( engine, text.getText()));
             Scene scene = new Scene(hbox, 400, 400);
 
             primaryStage.setScene(scene);

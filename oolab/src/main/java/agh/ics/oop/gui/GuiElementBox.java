@@ -18,7 +18,7 @@ public class GuiElementBox {
     private Image image;
     private ImageView imageView;
     private Label label;
-    private VBox box = new VBox(-5);  // Uzyj getera nie protected aby nie można było zepsuć wartości
+    private VBox box = new VBox(-5);
 
     public VBox getBox(){
         return this.box;
@@ -45,6 +45,7 @@ public class GuiElementBox {
         }
 
         box.getChildren().addAll((Node) this.imageView, this.label);
+
         box.setPadding(new Insets(1, 0, 1, 4));
     }
 }
