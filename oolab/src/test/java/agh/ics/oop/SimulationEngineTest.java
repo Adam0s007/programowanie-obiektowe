@@ -37,20 +37,20 @@ class SimulationEngineTest {
 //
 //
 //        //sprawdzanie czy zwierzątka wyjdą poza mapę, ich pozycja koncowa, ich kierunek
-//        String[] arr3 = {"f","b","b","l","r","b","f","f","f","f"};
-//        MoveDirection[] directions3 = new OptionsParser().parse(arr3);
-//        IWorldMap mapa3 = new RectangularMap(16, 16);
-//        Vector2d[] posits3 = { new Vector2d(1,2), new Vector2d(2, 3), new Vector2d(3,1)};
-//        IEngine engine3 = new SimulationEngine(directions3, mapa3, posits3);
-//        engine3.run();
-//        List <Animal> animals3 = mapa3.getAnimals();
-//
-//        assertEquals(animals3.get(0).getPosition(), new Vector2d(0,3));
-//        assertEquals(animals3.get(1).getPosition(), new Vector2d(3,2));
-//        assertEquals(animals3.get(2).getPosition(), new Vector2d(3,1));
-//        assertEquals(animals3.get(0).getDirection(), MapDirection.WEST);
-//        assertEquals(animals3.get(1).getDirection(), MapDirection.EAST);
-//        assertEquals(animals3.get(2).getDirection(), MapDirection.NORTH);
+        String[] arr3 = {"f","b","b","l","r","b","f","f","f","f"};
+        MoveDirection[] directions3 = new OptionsParser().parse(arr3);
+        IWorldMap mapa3 = new RectangularMap(16, 16);
+        Vector2d[] posits3 = { new Vector2d(1,2), new Vector2d(2, 3), new Vector2d(3,1)};
+        IEngine engine3 = new SimulationEngine(directions3, mapa3, posits3);
+        engine3.run();
+        HashMap<Vector2d,Animal> animals3 = mapa3.getAnimals();
+
+        assertEquals(animals3.get(new Vector2d(0,3)).getPosition(), new Vector2d(0,3));
+        assertEquals(animals3.get(new Vector2d(3,2)).getPosition(), new Vector2d(3,2));
+        assertEquals(animals3.get(new Vector2d(3,1)).getPosition(), new Vector2d(3,1));
+        assertEquals(animals3.get(new Vector2d(0,3)).getDirection(), MapDirection.WEST);
+        assertEquals(animals3.get(new Vector2d(3,2)).getDirection(), MapDirection.EAST);
+        assertEquals(animals3.get(new Vector2d(3,1)).getDirection(), MapDirection.NORTH);
 
     }
 }
