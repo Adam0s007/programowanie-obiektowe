@@ -80,15 +80,7 @@ public class App extends Application{
         GridPane.setHalignment(label, HPos.CENTER);
 
         //tworzenie widku w okienku
-        Button button = new Button("Close");
-        button.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-// Set the event handler for the button's ActionEvent
-        button.setOnAction(event -> {
-            // Close the application
-            Platform.exit();
-            // Disable all threads
-            System.exit(0);
-        });
+
         Scene scene = new Scene(grid, (rangeX+2)*width*45.5, (rangeY+2)*height*45.5);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);

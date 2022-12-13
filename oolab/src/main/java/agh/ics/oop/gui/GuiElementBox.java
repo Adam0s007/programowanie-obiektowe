@@ -45,7 +45,7 @@ public class GuiElementBox {
         }
 
         box.getChildren().addAll((Node) this.imageView, this.label);
-
+        box.setAlignment(Pos.CENTER);
         box.setPadding(new Insets(1, 0, 1, 4));
     }
 }

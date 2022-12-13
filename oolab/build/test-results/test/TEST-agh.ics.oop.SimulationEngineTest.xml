@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.SimulationEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-13T12:37:50" hostname="DESKTOP-3J3T1I2" time="0.038">
+<testsuite name="agh.ics.oop.SimulationEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-13T12:38:56" hostname="DESKTOP-3J3T1I2" time="0.039">
   <properties/>
-  <testcase name="run()" classname="agh.ics.oop.SimulationEngineTest" time="0.038"/>
+  <testcase name="run()" classname="agh.ics.oop.SimulationEngineTest" time="0.039"/>
   <system-out><![CDATA[ y\x  1 2 3
   4: -------
   3: | |N| |
