@@ -62,6 +62,7 @@ public class SimulationEngine implements IEngine,Runnable {
                 }
                 Thread.sleep(2000);
                 Platform.exit();
+                System.exit(0);
 
             }catch (InterruptedException e) {
                 throw new RuntimeException(e + "Przerwano symulację");

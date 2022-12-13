@@ -47,6 +47,7 @@ public class App extends Application{
     }
     private void drawMap(){
         grid.setGridLinesVisible(true);
+        //grid.setStyle("-fx-margin: auto;");
         grid.setStyle("-fx-padding: 100 100 100 100;");
         GrassField myMap = (GrassField) this.myMap;
         int rangeY = myMap.getUpperRight().y - myMap.getLowerLeft().y;
@@ -85,6 +86,15 @@ public class App extends Application{
         GridPane.setHalignment(label, HPos.CENTER);
 
         //tworzenie widku w okienku
+        Button button = new Button("Close");
+        button.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+// Set the event handler for the button's ActionEvent
+        button.setOnAction(event -> {
+            // Close the application
+            Platform.exit();
+            // Disable all threads
+            System.exit(0);
+        });
         Scene scene = new Scene(grid, (rangeX+2)*width*45.5, (rangeY+2)*height*45.5);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
@@ -102,6 +112,7 @@ public class App extends Application{
             public void uncaughtException(Thread t, Throwable e) {
                 System.out.println("Nieprawidlowo wpisane dane: " + e);
                 Platform.exit();
+                System.exit(0);
             }
         });
     }
@@ -118,6 +129,8 @@ public class App extends Application{
         engine.setDirections(directions);
         Thread threadEngine = new Thread(engine);
         threadEngine.start();
+
+
     }
 
     public void start(Stage primaryStage) {
