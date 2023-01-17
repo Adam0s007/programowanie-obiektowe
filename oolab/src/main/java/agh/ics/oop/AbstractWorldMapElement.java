@@ -24,11 +24,11 @@ abstract class AbstractWorldMapElement implements IMapElement{
     public String getLinkToImage(){
         String result;
         switch(this.toString()){
-            case ("N") -> result = "src/main/resources/up.png";
-            case ("E") -> result = "src/main/resources/right.png";
-            case ("S") -> result = "src/main/resources/down.png";
-            case ("W") -> result = "src/main/resources/left.png";
-            case ("*") -> result = "src/main/resources/grass.png";
+            case ("N") -> result = "oolab/src/main/resources/up.png";
+            case ("E") -> result = "oolab/src/main/resources/right.png";
+            case ("S") -> result = "oolab/src/main/resources/down.png";
+            case ("W") -> result = "oolab/src/main/resources/left.png";
+            case ("*") -> result = "oolab/src/main/resources/grass.png";
             default -> result = null;
         }
         return result;

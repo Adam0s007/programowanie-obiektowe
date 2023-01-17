@@ -18,8 +18,9 @@ public class App extends Application{
 
     private GridPane grid = new GridPane();
     private IWorldMap myMap;
-    private final int width = 45;
-    private final int height = 45;
+
+    private  int width = 60;
+    private int height = 60;
     public Stage primaryStage;
 
 
@@ -30,14 +31,13 @@ public class App extends Application{
             if (object != null) {
                 GuiElementBox newElem = new GuiElementBox((IMapElement) object);
                 result = newElem.getBox();
+                return result;
 
-            } else {
-                result = new VBox(new Label(""));
             }
-        } else {
-            result = new VBox(new Label(""));
         }
+            result = new VBox(new Label(""));
         return result;
+
     }
     private void drawMap(){
         grid.setGridLinesVisible(true);
@@ -81,7 +81,7 @@ public class App extends Application{
 
         //tworzenie widku w okienku
 
-        Scene scene = new Scene(grid, (rangeX+2)*width*45.5, (rangeY+2)*height*45.5);
+        Scene scene = new Scene(grid, rangeX*width*20, rangeY*height*20);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
         //primaryStage.show();
